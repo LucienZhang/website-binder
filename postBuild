@@ -9,4 +9,11 @@ apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0xB1998361219B
 curl -L https://github.com/SpencerPark/IJava/releases/download/v1.3.0/ijava-1.3.0.zip > ijava-kernel.zip
 unzip ijava-kernel.zip -d ijava-kernel \
   && cd ijava-kernel \
-  && python3 install.py --sys-prefix
+  && python install.py --sys-prefix
+
+jupyter kernelspec list
+ls
+
+# Cleanup
+rm ijava-kernel.zip
+rm -r ijava-kernel
