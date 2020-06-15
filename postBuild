@@ -11,9 +11,7 @@ unzip ijava-kernel.zip -d ijava-kernel \
   && cd ijava-kernel \
   && python install.py --sys-prefix
 
-jupyter kernelspec list
-ls
-
 # Cleanup
+cd ..
 rm ijava-kernel.zip
 rm -r ijava-kernel
