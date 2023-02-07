@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Le styles -->
+  <link href="/static/jupyter/css/styles.css" rel="stylesheet">
+  {% block extra_head %}{% endblock %}
+  <base target="_blank">
+</head>
+
+<body class="nbviewer">
+
+  <!-- These are loaded at the top of the body so they are available to
+       notebook cells when they are loaded below. -->
+  <script src="/static/jupyter/js/jquery.min.js"></script>
+  <script src="/static/jupyter/js/require.js"></script>
+  <script src="/static/jupyter/js/moment.min.js"></script>
+
+  {% block container %}<div class="container-fluid container-main">
+    {% block body %}{% endblock %}
+  </div>{% endblock container %}
+
+
+  <script src="/static/jupyter/js/bootstrap.min.js"></script>
+  <script src="/static/jupyter/js/headroom.min.js"></script>
+  <script src="/static/jupyter/js/jQuery.headroom.min.js"></script>
+
+  {% block extra_script %}{% endblock %}
+
+  <script>
+    require({
+        paths: {
+          moment: "/static/jupyter/js/moment.min.js"
+        }
+      }, ["moment"], function(moment){
+      var date = $("footer .date"),
+        m = moment(new Date(date.data('date'))),
+        update = function(){ date.text(m.fromNow()); };
+      setInterval(update, 61*1000);
+      update();
+      var w = $(window).scroll(function(event){
+        $("body").toggleClass("scrolled", w.scrollTop() > 0);
+      });
+    });
+  </script>
+
+</body>
+</html>
