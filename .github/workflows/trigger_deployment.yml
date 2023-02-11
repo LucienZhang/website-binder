@@ -1,0 +1,22 @@
+name: Trigger Deployment to LucienZhang.github.io
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Workflow
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.actions.createWorkflowDispatch({
+              owner: 'LucienZhang',
+              repo: 'LucienZhang.github.io',
+              workflow_id: 'deploy_gh_page.yml',
+              ref: 'main',
+            })
