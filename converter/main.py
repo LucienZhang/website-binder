@@ -23,7 +23,7 @@ if __name__ == '__main__':
             print(f'Converting {file.absolute()} to {output_file_path.absolute()}')
             nbdata = inputf.read()
             nb = nbformat.reads(nbdata, nbformat.current_nbformat)
-            html_exporter = HTMLExporter(template_name='classic')
+            html_exporter = HTMLExporter(template_name='basic')
             (body, _) = html_exporter.from_notebook_node(nb)
             content = TEMPLATE.render(body=body)
             outputf.write(content)
