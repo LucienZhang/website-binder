@@ -19,7 +19,7 @@ if __name__ == '__main__':
         file_path = str(file).split('website-binder/notebooks/')[-1]
         output_file_path = (OUTPUT_PATH/file_path).with_suffix('.html')
         output_file_path.parent.mkdir(parents=True, exist_ok=True)
-        with open(file.absolute(), encoding="utf-8") as inputf, open(str(output_file_path), 'w') as outputf:
+        with open(file.absolute(), encoding="utf-8") as inputf, open(output_file_path.absolute(), 'w') as outputf:
             nbdata = inputf.read()
             nb = nbformat.reads(nbdata, nbformat.current_nbformat)
             html_exporter = HTMLExporter(template_name='classic')
