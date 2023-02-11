@@ -7,12 +7,13 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  trigger-deployment:
     runs-on: ubuntu-latest
     steps:
-      - name: Trigger Workflow
+      - name: Trigger Deployment Workflow
         uses: actions/github-script@v6
         with:
+          github-token: ${{ secrets.BOT_ACCESS_TOKEN }}
           script: |
             github.rest.actions.createWorkflowDispatch({
               owner: 'LucienZhang',
